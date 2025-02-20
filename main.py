@@ -14,7 +14,8 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.016
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    
+    bg_image = pygame.image.load("asteroidBG.jpg")
+    bg_image = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -35,7 +36,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill((0,0,0))
+        screen.blit(bg_image, (0, 0))
         for item in drawable:
             item.draw(screen)
         updatable.update(dt)
